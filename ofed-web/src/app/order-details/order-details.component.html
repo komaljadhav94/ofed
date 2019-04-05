@@ -1,0 +1,85 @@
+<div class="container-fluid" style="margin-top: 10px;">
+  <div class="row">
+      
+    <div class="col-lg-8">
+        <div>
+            <img class="card-img-top" src="data:image/png;base64,{{restaurant.image}}" alt="Card image" style="width:100% !important" height="225px"> 
+        </div>
+        <div class="card" style="width:100%" style="margin-top: 5px;">
+            <div class="card-body" style="background-color: rgb(255, 212, 94)">
+                <div>
+                    <h2>
+                      {{restaurant.name}}
+                    </h2>
+                  </div>
+                  <hr/>
+                  <div>
+                      <p>
+                        {{restaurant.address1}} | {{restaurant.address2}} | {{restaurant.state}} |
+                        {{restaurant.city}} | {{restaurant.zipCode}}  
+                      </p>
+                    </div>
+            </div>
+        </div>
+
+        <div class="card" style="width:100%" style="margin-top: 5px;" *ngFor="let menu of restaurant.restaurantMenus">
+            <div class="card-body" style="background-color: rgb(148, 250, 178)">
+              <div class="row">
+                <div class="col-lg-3">{{menu.name}}</div>
+                <div class="col-lg-4">{{menu.description}}</div>
+                <div class="col-lg-2"><img class="card-img-top" src="data:image/png;base64,{{menu.image}}" alt="Card image" style="width:100% !important" height="50px"> </div>
+                <div class="col-lg-2">INR {{menu.price}}</div>
+                <div class="col-lg-1"> <div width="100%" height="50" class="btn btn-warning" style="font-size: larger" (click)="addToOrder(menu)"> + </div> </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card" style="width:100%; height: 100%;" style="margin-top: 5px;">
+            <div class="card-title" style="text-align:center; 
+            background-color: rgb(255, 212, 94); font-size: large">Your Order</div>
+          <div class="card-body">
+            <div class="row">
+               <div class="col-sm-2">Qnt.</div> 
+               <div class="col-sm-7">Item Name</div>
+               <div class="col-sm-3">Price</div> 
+            </div>
+
+            <div style="margin-top: 10px;">
+              <hr/>
+            </div>
+            <div class="row" *ngFor="let orderList of orderListMenu">
+                <div class="col-sm-2">{{orderList.quantity}}</div> 
+                <div class="col-sm-7">{{orderList.itemName}}</div> 
+                <div class="col-sm-3">Rs. {{orderList.price}}</div> 
+             </div>
+            <div style="margin-top: 10px;">
+                <hr/>
+              </div>
+             <div class="row">
+                <div class="col-sm-6">Items Subtotal:</div> 
+                <div class="col-sm-6">Rs: {{itemSubtotal}}</div> 
+             </div>
+             <hr/>
+             <div class="row">
+                <div class="col-sm-6">Delivery Fee:</div> 
+                <div class="col-sm-6">Rs: {{deliveryFee}}</div> 
+             </div>
+             <hr/>
+             <div class="row">
+                <div class="col-sm-6">Total Price</div> 
+                <div class="col-sm-6">Rs: {{totalPrice}}</div> 
+             </div>
+             <hr/>
+             <div class="row">
+                <div class="col-sm-12" style="align-content: center"><button class="btn btn-primary">
+                  Procceed to Checkout Rs. {{totalPrice}}
+                  </button>
+                </div> 
+             </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

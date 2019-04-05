@@ -1,0 +1,17 @@
+.navbar-nav active > a {
+	background-color: #333;
+	color: #fff;
+}
+
+.navbar-nav li > a {
+	margin-left: 5px;
+	text-transform: capitalize;
+	color: #333;
+	transition: background-color .2s, color .2s;
+	
+	&:hover,
+	&:focus {
+		background-color: rgb(52, 163, 85);
+		color: #fff;
+	}
+}
