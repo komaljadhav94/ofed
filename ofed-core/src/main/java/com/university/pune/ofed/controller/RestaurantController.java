@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,7 @@ public class RestaurantController {
 	
 	@GetMapping("/fetchAllRestaurants")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
+	@CrossOrigin
 	public ResponseEntity<?> fetchAllRestaurants(){
 		ResponseEntity<List<Restaurant>> responseEntity = null;
 		Iterable<Restaurant> restaurantsIterable = this.restaurantRepository.findAll();
@@ -45,6 +47,7 @@ public class RestaurantController {
 	@PostMapping("/fetchAllRestaurant")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)
+	@CrossOrigin
 	public ResponseEntity<?> fetchRestaurant(@RequestBody String id){
 		ResponseEntity<Restaurant> responseEntity = null;
 		Restaurant restaurant = this.restaurantRepository.findById(Long.valueOf(id)).get();
