@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app-router';
 import { MakePaymentComponent } from './order-details/make-payment/make-payment.component';
 import { OrderSuccessComponent } from './order-details/order-success/order-success.component';
+import { OrderCacheService } from './service/order-cache.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { OrderSuccessComponent } from './order-details/order-success/order-succe
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [OrderCacheService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
