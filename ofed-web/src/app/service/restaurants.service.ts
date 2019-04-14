@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RestaurantsModel } from '../model/restaurants-model';
 import { constants} from '../util/constants';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RequestOptions } from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,10 @@ export class RestaurantsService {
   constructor(private httpClient: HttpClient) { }
 
   getRestaurants(): Observable<RestaurantsModel[]> {
-     return this.httpClient.get<RestaurantsModel[]>(constants.API_ENDPOINT + 
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+                               .set('access-control-allow-origin','*');
+    return this.httpClient.get<RestaurantsModel[]>(constants.API_ENDPOINT + 
       '/api/restaurant/fetchAllRestaurants');
-
   }
 
   getRestaurant(id: string): Observable<RestaurantsModel> {

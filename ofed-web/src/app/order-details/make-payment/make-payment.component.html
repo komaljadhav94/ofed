@@ -1,0 +1,66 @@
+<div class="container" style="margin-top: 15px">
+    <div class="row">
+        <div class="col-sm-6 card">
+          <div class="card-body">
+            <form>
+                <div class="form-group">
+                  <label for="cardName">Name On Card</label>
+                  <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                  <label for="cardNumber">Card Number</label>
+                  <input type="text" class="form-control" id="cardNumber">
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="cardCVC">CVC</label>
+                      <input type="text" class="form-control" id="cardCVC">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="row">
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="cardExpMonth">Exp. Month</label>
+                                  <input type="text" class="form-control" id="cardExpMonth">
+                                </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="cardExpYear">Exp. Year</label>
+                                  <input type="text" class="form-control" id="cardExpYear">
+                                </div>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="address1">Address 1</label>
+                    <input type="text" class="form-control" id="address1">
+            
+                    <label for="address2">Address 2</label>
+                    <input type="text" class="form-control" id="address2">
+            
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city">
+            
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state">
+            
+                    <label for="zipCode">Zip Code</label>
+                    <input type="text" class="form-control" id="zipCode">
+
+                  </div>
+                <button class="btn btn-primary" (click)="makePayment()"
+                style="margin-right: 10px">Submit</button>
+                <button class="btn btn-warning" style="margin-right: 10px">Reset</button>
+                <button class="btn btn-danger">Cancel</button>
+              </form>
+              </div>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+      </div>
+    
+</div>

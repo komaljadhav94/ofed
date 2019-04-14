@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { RestaurantsModel } from '../model/restaurants-model';
 import { RestaurantsService } from '../service/restaurants.service';
 import { RestaurantsMenuModel } from '../model/restaurants-menu-model';
+import { OrderCacheService } from '../service/order-cache.service';
+import { FoodOrderModel } from '../model/food-order-model';
 
 @Component({
   selector: 'app-order-details',
@@ -17,7 +19,8 @@ export class OrderDetailsComponent implements OnInit {
   totalPrice: number = 0;
   orderListMap : Map<number, number> = new Map<number, number>();
   orderListMenu: {id: number, quantity:number, itemName:string, price:number}[] = [];
-  constructor(private restaurantsService: RestaurantsService, private activatedRoute: ActivatedRoute) {
+  constructor(private restaurantsService: RestaurantsService, private activatedRoute: ActivatedRoute,
+    private router: Router, private orderCacheService: OrderCacheService) {
    }
 
   ngOnInit() {
@@ -54,5 +57,13 @@ export class OrderDetailsComponent implements OnInit {
     }
 
     this.totalPrice = this.itemSubtotal + this.deliveryFee;
+  }
+
+  placeOrder(){
+    let foodOrderModel = new FoodOrderModel();
+    foodOrderModel.totalPrice = this.totalPrice;
+    this.orderCacheService.setFoodOrderModel(foodOrderModel);
+    
+    this.router.navigate(['makePayment']);
   }
 }

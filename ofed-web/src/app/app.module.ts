@@ -15,6 +15,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app-router';
+import { MakePaymentComponent } from './order-details/make-payment/make-payment.component';
+import { OrderSuccessComponent } from './order-details/order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { routes } from './app-router';
     LoginModelComponent,
     OrderDetailsComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    MakePaymentComponent,
+    OrderSuccessComponent
   ],
   imports: [
     BrowserModule,
