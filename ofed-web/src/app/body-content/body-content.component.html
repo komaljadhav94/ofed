@@ -28,7 +28,7 @@
       <span class="carousel-control-next-icon"></span>
     </a>
   </div>
-  <div class="container-fluid" style="margin-top: 15px;">
+  <div class="alert alert-warning" style="margin: 15px;">
     <div class="row">
       <div class="col-lg-4" *ngFor="let restaurant of restaurants" style="margin-bottom: 15px;">
           <div class="card" style="width:100%">
@@ -36,7 +36,7 @@
               <div class="card-body">
                 <h4 class="card-title">{{restaurant.name}}</h4>
                 <p class="card-text">{{restaurant.description}}</p>
-                <a class="btn btn-success" (click)="orderDetail(restaurant)">Order</a>
+                <a class="btn btn-success" style="color: white" (click)="orderDetail(restaurant)">Order</a>
               </div>
             </div>
       </div>

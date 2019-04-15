@@ -94,8 +94,7 @@ margin-left: 15px">
               </div>
             </div>
             <button class="btn btn-primary" (click)="makePayment()" style="margin-right: 10px">Submit</button>
-            <button class="btn btn-warning" style="margin-right: 10px">Reset</button>
-            <button class="btn btn-danger">Cancel</button>
+            <a class="btn btn-danger" [routerLink]="['/home']">Cancel</a>
         </form>
       </div>
     </div>
