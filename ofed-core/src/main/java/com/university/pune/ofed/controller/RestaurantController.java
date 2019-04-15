@@ -43,13 +43,30 @@ public class RestaurantController {
 		return responseEntity;
 	}
 	
-	@PostMapping("/fetchAllRestaurant")
+	@PostMapping("/fetchRestaurant")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> fetchRestaurant(@RequestBody String id){
 		ResponseEntity<Restaurant> responseEntity = null;
 		Restaurant restaurant = this.restaurantRepository.findById(Long.valueOf(id)).get();
 		responseEntity = new ResponseEntity<>(restaurant, HttpStatus.OK);
+		return responseEntity;
+	}
+	
+	@PostMapping("/fetchAllRestaurantsByName")
+	@Produces(MediaType.APPLICATION_JSON_VALUE)
+	@Consumes(MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> fetchAllRestaurantsByName(@RequestBody String name){
+		ResponseEntity<List<Restaurant>> responseEntity = null;
+		Iterable<Restaurant> restaurantsIterable = this.restaurantRepository.findByNameContaining(name);
+		List<Restaurant> restaurants = new ArrayList<>();
+		
+		restaurantsIterable.forEach(restaurant -> {
+			restaurants.add(restaurant);
+		});
+		
+		responseEntity = new ResponseEntity<List<Restaurant>>(restaurants, HttpStatus.OK);
+		
 		return responseEntity;
 	}
 }

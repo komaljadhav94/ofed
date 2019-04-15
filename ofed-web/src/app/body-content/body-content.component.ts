@@ -11,23 +11,27 @@ import {Router} from '@angular/router';
 export class BodyContentComponent implements OnInit {
   restaurants : RestaurantsModel[];
   constructor(private restaurantsService: RestaurantsService, private router: Router) {
+
     this.restaurantsService.getRestaurants().subscribe(
       response => {
         this.restaurants = response;
+      }
+    );
+
+    this.restaurantsService.restaurantsSearch.subscribe(
+      restaurant => {
+        console.log('Service call for search');
+        this.restaurantsService.getRestaurantByName(restaurant).subscribe(
+          response => {
+            this.restaurants = response;
+          }
+        );
       }
     );
    }
   
   ngOnInit() {
     
-  }
-
-  onLoginFormSubmit(userLoginForm: NgForm){
-    console.log(userLoginForm);
-  }
-
-  onRegisterFormSubmit(userRegisterForm: NgForm){
-    console.log(userRegisterForm);
   }
 
   userSettings = {}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../model/user-model';
+import { RestaurantsService } from '../service/restaurants.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
 
   loggedIn: boolean = false;
   userModel: UserModel;
-  constructor() { }
+  search: string;
+  constructor(private restaurantsService: RestaurantsService) { }
 
   ngOnInit() {
   }
@@ -24,5 +26,10 @@ export class HeaderComponent implements OnInit {
 
   signOut(){
     this.loggedIn = false;
+  }
+
+  searchRestaurants(){
+    console.log('searching ...');
+    this.restaurantsService.triggerSearch(this.search);
   }
 }

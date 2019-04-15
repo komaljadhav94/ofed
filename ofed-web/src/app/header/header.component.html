@@ -13,9 +13,10 @@
           </li>
         </ul>
 
-        <form class="form-inline" action="">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" size="50">
-          <button class="btn btn-success" type="submit">Search</button>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" 
+          name="search" [(ngModel)]="search" size="50">
+          <button class="btn btn-success" type="submit" (click)="searchRestaurants()">Search</button>
         </form>
 
         <ul class="navbar-nav ml-auto">
