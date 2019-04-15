@@ -1,101 +1,130 @@
-<!--Modal: Login / Register Form-->
-<div class="container-fluid modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog cascading-modal" role="document">
-      <!--Content-->
-      <div class="modal-content card card-image" style="background-color: rgba(253, 233, 143, 0)">
-  
-        <!--Modal cascading tabs-->
-        <div class="modal-c-tabs">
-  
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
-                Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
-                Register</a>
-            </li>
-          </ul>
-  
-          <!-- Tab panels -->
-          <div class="tab-content">
-            <!--Panel 7-->
-            <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-  
-              <!--Body-->
-              <form #userLoginForm="ngForm" (ngSubmit)="onLoginFormSubmit(userLoginForm)">
-              <div class="modal-body mb-1">
-                <div class="md-form form-sm mb-5">
-                  <i class="fas fa-envelope prefix"></i>
-                  <input name="email" ngModel required type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                  <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
-                </div>
-  
-                <div class="md-form form-sm mb-4">
-                  <i class="fas fa-lock prefix"></i>
-                  <input name="password" ngModel required type="password" id="modalLRInput11" class="form-control form-control-sm validate">
-                  <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
-                </div>
-                
-              </div>
-              <!--Footer-->
-              <div class="modal-footer">
-                <div class="">
-                  <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
-                 <button type="button"
-                 class="btn btn-danger waves-effect ml-auto" data-dismiss="modal">Close</button>
-                 <button class="btn btn-info">Forgot Password <i class="fas fa-sign-in ml-1"></i></button>
-                </div>
-              </div>
-              </form>
-            </div>
-            <!--/.Panel 7-->
-  
-            <!--Panel 8-->
-            <div class="tab-pane fade" id="panel8" role="tabpanel">
-  
-              <!--Body-->
-              <form #userRegisterForm="ngForm" (ngSubmit)="onRegisterFormSubmit(userRegisterForm)">
-              <div class="modal-body">
-                <div class="md-form form-sm mb-5">
-                  <i class="fas fa-envelope prefix"></i>
-                  <input name="email" ngModel required type="email" id="modalLRInput12" class="form-control form-control-sm validate">
-                  <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
-                </div>
-  
-                <div class="md-form form-sm mb-5">
-                  <i class="fas fa-lock prefix"></i>
-                  <input name="password" ngModel required type="password" id="modalLRInput13" class="form-control form-control-sm validate">
-                  <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
-                </div>
-  
-                <div class="md-form form-sm mb-4">
-                  <i class="fas fa-lock prefix"></i>
-                  <input name="repassword" ngModel required type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                  <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
-                </div>
-  
-                <div class="text-center form-sm mt-2">
-                  <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
-                </div>
-  
-              </div>
-              <!--Footer-->
-              <div class="modal-footer">
-                <div class="options text-right">
-                  <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
-                </div>
-                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-              </div>
-            </form>
-            </div>
-            <!--/.Panel 8-->
-          </div>
-  
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!--/.Content-->
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer bg-secondary">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="signIn()">Login</button>
+        <button type="button" class="btn btn-danger">Cancel</button>
+      </div>
     </div>
   </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp"
+                      placeholder="Enter first name" [(ngModel)]="userModel.firstName">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Enter last Name"
+                    [(ngModel)]="userModel.lastName">
+                  </div>
+                </div>
+              </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                  placeholder="Enter email" [(ngModel)]="userModel.email">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" class="form-control" id="password1" placeholder="Password"
+                [(ngModel)]="userModel.password">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" class="form-control" id="password2" placeholder="Password">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="address1">Address 1</label>
+                <input type="text" class="form-control" id="address1" placeholder="Address1" [(ngModel)]="userModel.address1">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="address2">Address 2</label>
+                <input type="text" class="form-control" id="address2" placeholder="Address2" [(ngModel)]="userModel.address2"></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" placeholder="City" [(ngModel)]="userModel.city"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" placeholder="State" [(ngModel)]="userModel.state"></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="zipCode">Zip Code</label>
+                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code/ Pin Code/ Aread Code" [(ngModel)]="userModel.zipCode"></div>
+            </div>
+          </div>
+      
+      </form>
+    </div>
+    <div class="modal-footer bg-secondary">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="signUp()">Register</button>
+      <button type="button" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+</div>
+</div>

@@ -45,7 +45,7 @@ public class Restaurant {
 	@Column(name="DESCRIPTION")
 	private String description;
 	
-	@OneToMany(mappedBy="restaurant", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="restaurant", fetch=FetchType.EAGER)
 	@JsonIgnoreProperties("restaurant")
 	private Set<RestaurantMenu> restaurantMenus;
 	

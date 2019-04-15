@@ -19,11 +19,17 @@
         </form>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="!loggedIn">
               <a class="btn btn-success" data-toggle="modal" 
-              data-target="#modalLRForm" style="color: white; margin-right: 5px;">Sign In</a>
+              data-target="#signInModal" style="color: white; margin-right: 5px;">Sign In</a>
           </li>
-         
+          <li class="nav-item dropdown" *ngIf="!loggedIn">
+            <a class="btn btn-success" data-toggle="modal" 
+            data-target="#signUpModal" style="color: white; margin-right: 5px;">Sign Up</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="loggedIn">
+          <a class="btn btn-success" style="color: white; margin-right: 5px;" (click)="signOut()">Sign Out</a>
+      </li>
           <!--li>
               <a class="nav-link" href="#"
               role="button"  aria-haspopup="true" 
@@ -33,4 +39,4 @@
         
       </nav>
 </div>
-<app-login-model></app-login-model>
+<app-login-model (loginStatus)="loginStatus($event)"></app-login-model>
