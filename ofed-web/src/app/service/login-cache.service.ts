@@ -27,4 +27,10 @@ export class LoginCacheService {
     return this.httpClient.post<UserModel>(constants.API_ENDPOINT + 
       '/api/user/register', userModel);
   }
+
+  loginUser(userModel: UserModel){
+    console.log(userModel);
+    return this.httpClient.post<UserModel>(constants.API_ENDPOINT + 
+      '/api/user/login', userModel);
+  }
 }

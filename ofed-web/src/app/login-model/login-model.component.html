@@ -14,16 +14,19 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-              placeholder="Enter email">
+              placeholder="Enter email" [(ngModel)]="userModel.email" name="email" required>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" id="exampleInputPassword1" 
+            placeholder="Password" [(ngModel)]="userModel.password" name="password" required>
           </div>
         </form>
       </div>
       <div class="modal-footer bg-secondary">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="signIn()">Login</button>
+        <!--div *ngIf="loginFailed">User name or password is worng, please try again!</div-->
+        <button type="button" class="btn btn-primary" data-dismiss="modal" 
+        (click)="signIn()">Login</button>
         <button type="button" class="btn btn-danger">Cancel</button>
       </div>
     </div>
@@ -49,14 +52,16 @@
                   <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp"
-                      placeholder="Enter first name" [(ngModel)]="userModel.firstName">
+                      placeholder="Enter first name" [(ngModel)]="userModel.firstName"
+                      name="firstName">
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="lastName">Last Name</label>
                     <input type="text" class="form-control" id="lastName" placeholder="Enter last Name"
-                    [(ngModel)]="userModel.lastName">
+                    [(ngModel)]="userModel.lastName"
+                    name="lastName">
                   </div>
                 </div>
               </div>
@@ -66,14 +71,16 @@
               <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                  placeholder="Enter email" [(ngModel)]="userModel.email">
+                  placeholder="Enter email" [(ngModel)]="userModel.email"
+                  name="email">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="password1">Password</label>
                 <input type="password" class="form-control" id="password1" placeholder="Password"
-                [(ngModel)]="userModel.password">
+                [(ngModel)]="userModel.password"
+                name="password">
               </div>
             </div>
           </div>
@@ -88,7 +95,8 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="address1">Address 1</label>
-                <input type="text" class="form-control" id="address1" placeholder="Address1" [(ngModel)]="userModel.address1">
+                <input type="text" class="form-control" id="address1" placeholder="Address1" 
+                [(ngModel)]="userModel.address1" name="address1">
               </div>
             </div>
           </div>
@@ -97,12 +105,14 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="address2">Address 2</label>
-                <input type="text" class="form-control" id="address2" placeholder="Address2" [(ngModel)]="userModel.address2"></div>
+                <input type="text" class="form-control" id="address2" placeholder="Address2" 
+                [(ngModel)]="userModel.address2" name="address2"></div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="city">City</label>
-                <input type="text" class="form-control" id="city" placeholder="City" [(ngModel)]="userModel.city"></div>
+                <input type="text" class="form-control" id="city" placeholder="City" 
+                [(ngModel)]="userModel.city" name="city"></div>
             </div>
           </div>
 
@@ -110,12 +120,15 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="state">State</label>
-                <input type="text" class="form-control" id="state" placeholder="State" [(ngModel)]="userModel.state"></div>
+                <input type="text" class="form-control" id="state" placeholder="State" 
+                [(ngModel)]="userModel.state" name="state"></div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="zipCode">Zip Code</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code/ Pin Code/ Aread Code" [(ngModel)]="userModel.zipCode"></div>
+                <input type="text" class="form-control" id="zipCode" 
+                placeholder="Zip Code/ Pin Code/ Aread Code" 
+                [(ngModel)]="userModel.zipCode" name="zipCode"></div>
             </div>
           </div>
       

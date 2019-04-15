@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,11 +49,24 @@ public class UserController {
 	@PostMapping("/register")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> register(User user){
+	public ResponseEntity<?> register(@RequestBody User user){
 		ResponseEntity<User> responseEntity = null;
 		User result = this.userRepository.save(user);
 		responseEntity = new ResponseEntity<User>(result, HttpStatus.OK);
 		return responseEntity;
 	}
 	
+	@PostMapping("/login")
+	@Produces(MediaType.APPLICATION_JSON_VALUE)
+	@Consumes(MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> login(@RequestBody User user){
+		ResponseEntity<User> responseEntity = null;
+		User result = this.userRepository.findUserByEmail(user.getEmail());
+		if(result != null && user.getPassword().equals(result.getPassword())) {
+			responseEntity = new ResponseEntity<User>(result, HttpStatus.OK);
+		} else {
+			responseEntity = new ResponseEntity<User>(new User(), HttpStatus.NOT_FOUND);
+		}
+		return responseEntity;
+	}
 }

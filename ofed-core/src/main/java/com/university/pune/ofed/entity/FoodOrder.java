@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class FoodOrder {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
     private Long id;
 	

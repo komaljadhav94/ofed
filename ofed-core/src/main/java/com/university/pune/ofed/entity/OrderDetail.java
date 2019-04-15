@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class OrderDetail {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
     private Long id;
 	

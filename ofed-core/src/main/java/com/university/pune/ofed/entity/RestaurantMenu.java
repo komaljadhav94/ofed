@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class RestaurantMenu {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
     private Long id;
 	

@@ -19,6 +19,10 @@
         </form>
 
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown" *ngIf="loggedIn">
+                <span class="btn btn-success"
+                style="color: white; margin-right: 5px;">Welcome : {{userModel.firstName}}, {{userModel.lastName}}</span>
+            </li>
           <li class="nav-item dropdown" *ngIf="!loggedIn">
               <a class="btn btn-success" data-toggle="modal" 
               data-target="#signInModal" style="color: white; margin-right: 5px;">Sign In</a>
@@ -39,4 +43,4 @@
         
       </nav>
 </div>
-<app-login-model (loginStatus)="loginStatus($event)"></app-login-model>
+<app-login-model (loggedInUser)="loginStatus($event)"></app-login-model>
