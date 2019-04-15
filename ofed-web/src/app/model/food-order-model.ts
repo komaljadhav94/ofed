@@ -14,5 +14,5 @@ export class FoodOrderModel {
     user: UserModel;
     payment: PaymentModel;
 
-    orderDetails: OrderDetailModel[];
+    orderDetail: OrderDetailModel[];
  }

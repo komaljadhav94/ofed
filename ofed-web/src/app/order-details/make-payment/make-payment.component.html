@@ -4,32 +4,37 @@
           <div class="card-body">
             <form>
                 <div class="form-group">
-                  <label for="cardName">Name On Card</label>
-                  <input type="text" class="form-control" id="name">
+                  <label for="NameOnCard">Name On Card</label>
+                  <input type="text" class="form-control" id="NameOnCard"
+                  [(ngModel)]="paymentModel.nameOnCard" name="NameOnCard">
                 </div>
                 <div class="form-group">
                   <label for="cardNumber">Card Number</label>
-                  <input type="text" class="form-control" id="cardNumber">
+                  <input type="text" class="form-control" id="cardNumber"
+                  [(ngModel)]="paymentModel.cardNumber" name="cardNumber">
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="cardCVC">CVC</label>
-                      <input type="text" class="form-control" id="cardCVC">
+                      <label for="ccv">CVC</label>
+                      <input type="text" class="form-control" id="ccv"
+                      [(ngModel)]="paymentModel.ccv" name="ccv">
                     </div>
                   </div>
                   <div class="col-sm-6">
                       <div class="row">
                           <div class="col-sm-6">
                               <div class="form-group">
-                                  <label for="cardExpMonth">Exp. Month</label>
-                                  <input type="text" class="form-control" id="cardExpMonth">
+                                  <label for="expMonth">Exp. Month</label>
+                                  <input type="text" class="form-control" id="expMonth"
+                                  [(ngModel)]="paymentModel.expMonth" name="expMonth">
                                 </div>
                           </div>
                           <div class="col-sm-6">
                               <div class="form-group">
-                                  <label for="cardExpYear">Exp. Year</label>
-                                  <input type="text" class="form-control" id="cardExpYear">
+                                  <label for="expYear">Exp. Year</label>
+                                  <input type="text" class="form-control" id="expYear"
+                                  [(ngModel)]="paymentModel.expYear" name="expYear">
                                 </div>
                           </div>
                         </div>
@@ -37,19 +42,24 @@
                 </div>
                 <div class="form-group">
                     <label for="address1">Address 1</label>
-                    <input type="text" class="form-control" id="address1">
+                    <input type="text" class="form-control" id="address1"
+                    [(ngModel)]="paymentModel.address1" name="address1">
             
                     <label for="address2">Address 2</label>
-                    <input type="text" class="form-control" id="address2">
+                    <input type="text" class="form-control" id="address2"
+                    [(ngModel)]="paymentModel.address2" name="address2">
             
                     <label for="city">City</label>
-                    <input type="text" class="form-control" id="city">
+                    <input type="text" class="form-control" id="city"
+                    [(ngModel)]="paymentModel.city" name="city">
             
                     <label for="state">State</label>
-                    <input type="text" class="form-control" id="state">
+                    <input type="text" class="form-control" id="state"
+                    [(ngModel)]="paymentModel.state" name="state">
             
                     <label for="zipCode">Zip Code</label>
-                    <input type="text" class="form-control" id="zipCode">
+                    <input type="text" class="form-control" id="zipCode"
+                    [(ngModel)]="paymentModel.zipCode" name="zipCode">
 
                   </div>
                 <button class="btn btn-primary" (click)="makePayment()"

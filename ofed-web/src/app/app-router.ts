@@ -13,5 +13,5 @@ export const routes: Routes = [
     {path: 'contactus', component: ContactUsComponent},
     {path: 'order/:id', component: OrderDetailsComponent},
     {path: 'makePayment', component: MakePaymentComponent},
-    {path: 'orderSuccess', component: OrderSuccessComponent},
+    {path: 'orderSuccess/:id', component: OrderSuccessComponent},
 ];

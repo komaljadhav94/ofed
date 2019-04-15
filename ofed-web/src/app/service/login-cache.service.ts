@@ -33,4 +33,9 @@ export class LoginCacheService {
     return this.httpClient.post<UserModel>(constants.API_ENDPOINT + 
       '/api/user/login', userModel);
   }
+
+  fetchDefaultUser(){
+    return this.httpClient.get<UserModel>(constants.API_ENDPOINT + 
+      '/api/user/fetchDefaultUser');
+  }
 }

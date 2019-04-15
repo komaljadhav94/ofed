@@ -35,7 +35,7 @@ public class Payment {
 	private Integer expYear;
 
 	@Column(name = "NAMEONCARD")
-	private String NameOnCard;
+	private String nameOnCard;
 
 	@Column(name = "ADDRESS1")
 	private String address1;
@@ -102,11 +102,11 @@ public class Payment {
 	}
 
 	public String getNameOnCard() {
-		return NameOnCard;
+		return nameOnCard;
 	}
 
 	public void setNameOnCard(String nameOnCard) {
-		NameOnCard = nameOnCard;
+		this.nameOnCard = nameOnCard;
 	}
 
 	public String getAddress1() {

@@ -46,6 +46,15 @@ public class UserController {
 		return responseEntity;
 	}
 	
+	@GetMapping("/fetchDefaultUser")
+	@Produces(MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> fetchDefaultUser(){
+		ResponseEntity<User> responseEntity = null;
+		User user = this.userRepository.findById((long) 1).get();
+		responseEntity = new ResponseEntity<User>(user, HttpStatus.OK);
+		return responseEntity;
+	}
+	
 	@PostMapping("/register")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)

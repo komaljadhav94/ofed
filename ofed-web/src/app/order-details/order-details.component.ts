@@ -5,6 +5,8 @@ import { RestaurantsService } from '../service/restaurants.service';
 import { RestaurantsMenuModel } from '../model/restaurants-menu-model';
 import { OrderCacheService } from '../service/order-cache.service';
 import { FoodOrderModel } from '../model/food-order-model';
+import { LoginCacheService } from '../service/login-cache.service';
+import { OrderDetailModel } from '../model/order-detail-model';
 
 @Component({
   selector: 'app-order-details',
@@ -20,7 +22,8 @@ export class OrderDetailsComponent implements OnInit {
   orderListMap : Map<number, number> = new Map<number, number>();
   orderListMenu: {id: number, quantity:number, itemName:string, price:number}[] = [];
   constructor(private restaurantsService: RestaurantsService, private activatedRoute: ActivatedRoute,
-    private router: Router, private orderCacheService: OrderCacheService) {
+    private router: Router, private orderCacheService: OrderCacheService,
+    private loginCacheService: LoginCacheService) {
    }
 
   ngOnInit() {
@@ -62,8 +65,20 @@ export class OrderDetailsComponent implements OnInit {
   placeOrder(){
     let foodOrderModel = new FoodOrderModel();
     foodOrderModel.totalPrice = this.totalPrice;
+    let orderDetailModels : OrderDetailModel[] = []; 
+    this.restaurant.restaurantMenus.forEach(data => {
+      this.orderListMenu.forEach(menuItem =>{
+        if(menuItem.id === data.id){
+          let orderDetailModel : OrderDetailModel = new OrderDetailModel();
+          orderDetailModel.restaurantMenus = data;
+          orderDetailModel.menuItemQuantity = menuItem.quantity;
+          orderDetailModel.totalPrice = menuItem.price;
+          orderDetailModels.push(orderDetailModel);
+        }
+      });
+    });
+    foodOrderModel.orderDetail = orderDetailModels;
     this.orderCacheService.setFoodOrderModel(foodOrderModel);
-    
     this.router.navigate(['makePayment']);
   }
 }

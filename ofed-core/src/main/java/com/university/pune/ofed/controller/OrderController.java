@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.university.pune.ofed.entity.FoodOrder;
+import com.university.pune.ofed.entity.Payment;
+import com.university.pune.ofed.repository.OrderDetailRepository;
 import com.university.pune.ofed.repository.OrderRepository;
+import com.university.pune.ofed.repository.PaymentRepository;
 
 @RestController
 @RequestMapping("api/order")
@@ -25,38 +28,50 @@ public class OrderController {
 
 	@Autowired
 	OrderRepository orderRepository;
+
+	@Autowired
+	PaymentRepository paymentRepository;
 	
+	@Autowired
+	OrderDetailRepository orderDetailRepository;
+
 	@GetMapping("welcome")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> welcome(){
+	public ResponseEntity<String> welcome() {
 		return new ResponseEntity<String>("Welome to Orders!", HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/fetchAllOrders")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> fetchAllOrders(){
-		
+	public ResponseEntity<?> fetchAllOrders() {
+
 		List<FoodOrder> orders = new ArrayList<>();
 		ResponseEntity<List<FoodOrder>> responseEntity = null;
-		
+
 		Iterable<FoodOrder> orderDB = this.orderRepository.findAll();
 		orderDB.forEach(order -> {
 			orders.add(order);
 		});
 		responseEntity = new ResponseEntity<List<FoodOrder>>(orders, HttpStatus.OK);
-		
+
 		return responseEntity;
 	}
-	
+
 	@PostMapping("/placeOrder")
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> placeOrder(@RequestBody FoodOrder foodOrder){
+	public ResponseEntity<?> placeOrder(@RequestBody FoodOrder foodOrder) {
 		System.out.println("Placing order for user" + foodOrder.getUser().getId());
+		Payment payment = this.paymentRepository.save(foodOrder.getPayment());
+		foodOrder.setPayment(payment);
 		FoodOrder result = this.orderRepository.save(foodOrder);
+		foodOrder.getOrderDetail().forEach(data -> {
+			data.setFoodOrder(result);
+			this.orderDetailRepository.save(data);
+		});
 		System.out.println("Order has been placed");
 		ResponseEntity<FoodOrder> responseEntity = new ResponseEntity<FoodOrder>(result, HttpStatus.OK);
 		return responseEntity;
 	}
-	
+
 }
